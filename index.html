@@ -152,15 +152,34 @@ overflow:hidden;
 <div class="container">
 
 <h1>ATELIER STILL</h1>
+
+<div
+style="
+width:80px;
+height:80px;
+border:2px solid #183B33;
+border-radius:50%;
+margin:0 auto 20px auto;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:30px;
+">
+✦
+</div>
+
 <p style="
 letter-spacing:3px;
 font-size:12px;
 color:#8A857C;
 margin-bottom:10px;
 ">
-A DAILY 
+A DAILY REFLECTION PRACTICE
+</p>
+
 <p class="subtitle">
-在忙碌與答案之外， 留一點空間給自己。
+在忙碌與答案之外，<br>
+留一點空間給自己。
 </p>
 
 <button
@@ -458,6 +477,8 @@ supportCards[
 Math.floor(Math.random()*supportCards.length)
 ];
 
+document.getElementById("supportArea").style.display="none";
+
 document.getElementById("result").innerHTML = `
 
 <div class="result">
@@ -543,6 +564,20 @@ ${selectedMainCard.practice}
 
 </div>
 
+<br>
+
+<div style="text-align:center;">
+
+<button
+class="primary-btn"
+onclick="restartDraw()">
+
+重新抽牌
+
+</button>
+
+</div>
+
 </div>
 
 `;
@@ -553,6 +588,23 @@ behavior:"smooth"
 });
 
 }
+
+function restartDraw(){
+
+document.getElementById("result").innerHTML = "";
+
+document.getElementById("ritualArea").style.display = "none";
+
+document.getElementById("supportArea").style.display = "none";
+
+document.getElementById("drawArea").style.display = "none";
+
+startDraw();
+
+window.scrollTo({
+top:0,
+behavior
+
 </script>
 
 </body>
