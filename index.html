@@ -475,8 +475,11 @@ ${supportCard.reading}
 <div class="guidance">
 
 ${
+supportCard.combo &&
 supportCard.combo[selectedMainCard.name]
-||
+?
+supportCard.combo[selectedMainCard.name]
+:
 "今天可以同時從主卡與副卡的角度思考目前的狀態。"
 }
 
