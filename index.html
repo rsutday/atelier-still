@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,29 +10,40 @@
 
 body{
     margin:0;
+    padding:0;
     background:#F7F2EA;
-    font-family:Microsoft JhengHei,sans-serif;
-    text-align:center;
     color:#183B33;
+    font-family:"Microsoft JhengHei",sans-serif;
 }
 
 .container{
-    max-width:800px;
+    max-width:900px;
     margin:auto;
     padding:40px 20px;
+    text-align:center;
 }
 
 h1{
     font-size:48px;
+    margin-bottom:10px;
 }
 
 .subtitle{
-    margin-bottom:40px;
     color:#666;
+    margin-bottom:40px;
 }
 
 button{
     cursor:pointer;
+}
+
+.primary-btn{
+    padding:14px 28px;
+    border:none;
+    border-radius:999px;
+    background:#183B33;
+    color:white;
+    font-size:16px;
 }
 
 #drawArea{
@@ -69,22 +79,49 @@ button{
 }
 
 .card:hover{
-    transform:translateY(-5px);
+    transform:translateY(-6px);
 }
 
 .result{
-    margin-top:40px;
-    font-size:20px;
+    margin-top:50px;
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    text-align:left;
+}
+
+.section-title{
+    color:#999;
+    font-size:14px;
+    margin-top:25px;
+}
+
+.card-title{
+    text-align:center;
+    font-size:30px;
+    margin-bottom:20px;
 }
 
 .guidance{
-    margin-top:20px;
     line-height:1.8;
+}
+
+.question{
+    background:#F5F5F5;
+    padding:15px;
+    border-radius:10px;
+    margin-top:10px;
+}
+
+.practice{
+    background:#EEF5EF;
+    padding:15px;
+    border-radius:10px;
+    margin-top:10px;
 }
 
 </style>
 </head>
-
 <body>
 
 <div class="container">
@@ -95,13 +132,15 @@ button{
 為今天留一點安靜
 </p>
 
-<button onclick="startDraw()">
+<button
+class="primary-btn"
+onclick="startDraw()">
 開始抽牌
 </button>
 
 <div id="drawArea">
 
-<h2>選一張牌</h2>
+<h2>選一張主卡</h2>
 
 <div class="cards">
 
@@ -121,59 +160,139 @@ button{
 
 <script>
 
-const cards = [
+const mainCards = [
 
 {
 name:"留白",
-guidance:"今天不需要填滿每一個空隙。"
+guidance:"今天不需要填滿每一個空隙。",
+reading:"有些答案來自努力，有些答案來自空間。這張牌提醒你，不需要把每一刻都安排好。",
+question:"最近有什麼事情，比起努力，更需要空間？",
+practice:"今天刻意留出十分鐘空白時間，不安排任何事情。"
 },
 
 {
 name:"修復",
-guidance:"你不需要在還沒準備好的時候，證明自己已經沒事。"
+guidance:"你不需要在還沒準備好的時候，證明自己已經沒事。",
+reading:"修復不是回到原本的樣子，而是在經歷之後，慢慢找到新的平衡。",
+question:"如果不用急著恢復，你最想給自己什麼空間？",
+practice:"今天允許自己放慢一件原本急著完成的事。"
 },
 
 {
 name:"邊界",
-guidance:"溫柔不等於必須答應所有期待。"
+guidance:"溫柔不等於必須答應所有期待。",
+reading:"界線不是推開別人，而是讓彼此知道如何更舒服地靠近。",
+question:"最近有哪件事讓你忽略了自己的界線？",
+practice:"練習對一件不想答應的事情多停留三秒再回應。"
 },
 
 {
 name:"信任",
-guidance:"信任不是保證，而是願意面對未知。"
+guidance:"信任不是保證，而是願意面對未知。",
+reading:"信任並不代表確定結果，而是在不確定中仍願意往前一步。",
+question:"現在的你，最想相信什麼？",
+practice:"寫下一件你願意交給時間的事情。"
 },
 
 {
 name:"勇氣",
-guidance:"勇氣不是不害怕，而是在害怕時仍願意前進。"
+guidance:"勇氣不是不害怕，而是在害怕時仍願意前進。",
+reading:"很多時候，勇氣不是巨大突破，而是在猶豫中願意踏出一小步。",
+question:"如果不讓害怕決定方向，你會想做什麼？",
+practice:"完成一個你拖延已久的小步驟。"
+}
+
+];
+
+const supportCards = [
+
+{
+name:"自己",
+guidance:"先把注意力帶回自己。"
+},
+
+{
+name:"時間",
+guidance:"有些事情需要時間完成它自己的工作。"
+},
+
+{
+name:"關係",
+guidance:"把這張牌放進一段重要關係裡理解。"
 }
 
 ];
 
 function startDraw(){
 
-document.getElementById("drawArea").style.display = "block";
+document.getElementById("drawArea").style.display="block";
 
 }
 
 function pickCard(){
 
-const random =
-cards[Math.floor(Math.random()*cards.length)];
+const mainCard =
+mainCards[Math.floor(Math.random()*mainCards.length)];
 
-document.getElementById("result").innerHTML =
+const supportCard =
+supportCards[Math.floor(Math.random()*supportCards.length)];
+
+document.getElementById("result").innerHTML=
 
 `
 <div class="result">
 
-<h2>${random.name}</h2>
+<div class="card-title">
+
+${mainCard.name}
+×
+${supportCard.name}
+
+</div>
+
+<div class="section-title">
+核心指引
+</div>
 
 <div class="guidance">
-${random.guidance}
+
+<p>${mainCard.guidance}</p>
+
+<p>${supportCard.guidance}</p>
+
+</div>
+
+<div class="section-title">
+主卡解讀
+</div>
+
+<div class="guidance">
+${mainCard.reading}
+</div>
+
+<div class="section-title">
+反思問題
+</div>
+
+<div class="question">
+${mainCard.question}
+</div>
+
+<div class="section-title">
+今日支持
+</div>
+
+<div class="practice">
+${mainCard.practice}
 </div>
 
 </div>
 `;
+
+window.scrollTo({
+top:document.body.scrollHeight,
+behavior:"smooth"
+});
 
 }
 
