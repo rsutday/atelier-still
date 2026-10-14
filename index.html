@@ -153,7 +153,25 @@ onclick="startDraw()">
 </div>
 
 </div>
+<div id="supportArea" style="display:none;">
 
+<h2>選一張副卡</h2>
+
+<div class="cards">
+
+<div class="card" onclick="pickSupportCard()">◇</div>
+
+<div class="card" onclick="pickSupportCard()">◇</div>
+
+<div class="card" onclick="pickSupportCard()">◇</div>
+
+<div class="card" onclick="pickSupportCard()">◇</div>
+
+<div class="card" onclick="pickSupportCard()">◇</div>
+
+</div>
+
+</div>
 <div id="result"></div>
 
 </div>
@@ -306,6 +324,26 @@ combo:{
 "留白":"留白能為改變騰出空間。",
 "真實":"真正的改變往往從誠實開始。"
 }
+},
+
+{
+name:"選擇",
+guidance:"不是所有選擇都需要立刻決定。",
+reading:"有時候看見選項本身，就是一種前進。",
+combo:{
+"勇氣":"勇敢不一定是衝刺，也可能是做出選擇。",
+"真實":"選擇往往反映了你真正重視的事。"
+}
+},
+
+{
+name:"情緒",
+guidance:"情緒也是一種訊息。",
+reading:"情緒未必需要立刻解決，但值得被理解。",
+combo:{
+"修復":"理解感受，有時比壓抑感受更能修復自己。",
+"安定":"當情緒被看見，安全感才有機會出現。"
+}
 }
     
 ];
@@ -325,45 +363,12 @@ function pickCard(){
 selectedMainCard =
 mainCards[Math.floor(Math.random()*mainCards.length)];
 
-document.getElementById("result").innerHTML = `
+selectedMainCard =
+mainCards[Math.floor(Math.random()*mainCards.length)];
 
-<div class="result">
+document.getElementById("drawArea").style.display="none";
 
-<h2>主卡已選定</h2>
-
-<div class="guidance">
-
-<p>
-${selectedMainCard.name}
-</p>
-
-<p>
-請抽取一張副卡
-</p>
-
-</div>
-
-<div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:30px;">
-
-<button class="primary-btn" onclick="pickSupportCard()">
-◇
-</button>
-
-<button class="primary-btn" onclick="pickSupportCard()">
-◇
-</button>
-
-<button class="primary-btn" onclick="pickSupportCard()">
-◇
-</button>
-
-</div>
-
-</div>
-
-`;
-
-}
+document.getElementById("supportArea").style.display="block";
 
 function pickSupportCard(){
 
