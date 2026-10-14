@@ -63,6 +63,11 @@ button{
     height:180px;
 
     background:#183B33;
+    background:linear-gradient(
+    180deg,
+    #23493f 0%,
+    #183B33 100%
+);
     color:white;
 
     border-radius:12px;
@@ -78,9 +83,21 @@ button{
     transition:0.3s;
 
 box-shadow:0 8px 20px rgba(0,0,0,0.15);
-border:1px solid rgba
+border:1px solid rgba(255,255,255,0.15);
+position:relative;
+overflow:hidden;
 }
-
+    
+.card:before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:60%;
+    height:100%;
+    background:rgba(255,255,255,.08);
+    transform:skewX
+    
 .card:hover{
     transform:translateY(-10px) scale(1.03);
 }
