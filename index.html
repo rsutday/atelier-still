@@ -223,29 +223,76 @@ guidance:"把這張牌放進一段重要關係裡理解。"
 
 ];
 
+let selectedMainCard = null;
+
 function startDraw(){
 
 document.getElementById("drawArea").style.display="block";
+
+document.getElementById("result").innerHTML="";
 
 }
 
 function pickCard(){
 
-const mainCard =
+selectedMainCard =
 mainCards[Math.floor(Math.random()*mainCards.length)];
 
+document.getElementById("result").innerHTML = `
+
+<div class="result">
+
+<h2>主卡已選定</h2>
+
+<div class="guidance">
+
+<p>
+${selectedMainCard.name}
+</p>
+
+<p>
+請抽取一張副卡
+</p>
+
+</div>
+
+<div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:30px;">
+
+<button class="primary-btn" onclick="pickSupportCard()">
+◇
+</button>
+
+<button class="primary-btn" onclick="pickSupportCard()">
+◇
+</button>
+
+<button class="primary-btn" onclick="pickSupportCard()">
+◇
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+function pickSupportCard(){
+
 const supportCard =
-supportCards[Math.floor(Math.random()*supportCards.length)];
+supportCards[
+Math.floor(Math.random()*supportCards.length)
+];
 
-document.getElementById("result").innerHTML=
+document.getElementById("result").innerHTML = `
 
-`
 <div class="result">
 
 <div class="card-title">
 
-${mainCard.name}
-×
+${selectedMainCard.name}
+ ×
 ${supportCard.name}
 
 </div>
@@ -256,9 +303,13 @@ ${supportCard.name}
 
 <div class="guidance">
 
-<p>${mainCard.guidance}</p>
+<p>
+${selectedMainCard.guidance}
+</p>
 
-<p>${supportCard.guidance}</p>
+<p>
+${supportCard.guidance}
+</p>
 
 </div>
 
@@ -267,7 +318,9 @@ ${supportCard.name}
 </div>
 
 <div class="guidance">
-${mainCard.reading}
+
+${selectedMainCard.reading}
+
 </div>
 
 <div class="section-title">
@@ -275,7 +328,9 @@ ${mainCard.reading}
 </div>
 
 <div class="question">
-${mainCard.question}
+
+${selectedMainCard.question}
+
 </div>
 
 <div class="section-title">
@@ -283,10 +338,13 @@ ${mainCard.question}
 </div>
 
 <div class="practice">
-${mainCard.practice}
+
+${selectedMainCard.practice}
+
 </div>
 
 </div>
+
 `;
 
 window.scrollTo({
@@ -295,7 +353,6 @@ behavior:"smooth"
 });
 
 }
-
 </script>
 
 </body>
