@@ -1,4 +1,60 @@
-ATELIER STILL
-每日心靈指引
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATELIER STILL</title>
 
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#F7F2EA;
+  text-align:center;
+  padding-top:100px;
+}
+
+button{
+  padding:12px 24px;
+  font-size:18px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h1>ATELIER STILL</h1>
+
+<p>每日心靈指引</p>
+
+<button onclick="drawCard()">
 開始抽牌
+</button>
+
+<p id="result"></p>
+
+<script>
+
+const cards = [
+"留白",
+"修復",
+"邊界",
+"信任",
+"勇氣"
+];
+
+function drawCard(){
+
+ const randomIndex =
+ Math.floor(Math.random()*cards.length);
+
+ document.getElementById("result")
+ .innerText =
+ "今日卡牌：" + cards[randomIndex];
+
+}
+
+</script>
+
+</body>
+</html>
