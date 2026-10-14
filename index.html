@@ -70,6 +70,7 @@ button{
     #23493f 0%,
     #183B33 100%
 );
+    color:#F5E7B5;
     color:white;
 
     border-radius:12px;
@@ -78,7 +79,8 @@ button{
     align-items:center;
     justify-content:center;
 
-    font-size:40px;
+    font-size:48px;
+    letter-spacing:2px;
 
     cursor:pointer;
 
@@ -210,11 +212,11 @@ onclick="showMainCards()">
 
 <div class="cards">
 
-<div class="card" onclick="pickCard()">🂠</div>
-<div class="card" onclick="pickCard()">🂠</div>
-<div class="card" onclick="pickCard()">🂠</div>
-<div class="card" onclick="pickCard()">🂠</div>
-<div class="card" onclick="pickCard()">🂠</div>
+<div class="card" onclick="pickCard()">✦</div>
+<div class="card" onclick="pickCard()">✦</div>
+<div class="card" onclick="pickCard()">✦</div>
+<div class="card" onclick="pickCard()">✦</div>
+<div class="card" onclick="pickCard()">✦</div>
 
 </div>
 
@@ -233,15 +235,11 @@ color:#666;
     
 <div class="cards">
 
-<div class="card" onclick="pickSupportCard()">◇</div>
-
-<div class="card" onclick="pickSupportCard()">◇</div>
-
-<div class="card" onclick="pickSupportCard()">◇</div>
-
-<div class="card" onclick="pickSupportCard()">◇</div>
-
-<div class="card" onclick="pickSupportCard()">◇</div>
+<div class="card" onclick="pickSupportCard()">✧</div>
+<div class="card" onclick="pickSupportCard()">✧</div>
+<div class="card" onclick="pickSupportCard()">✧</div>
+<div class="card" onclick="pickSupportCard()">✧</div>
+<div class="card" onclick="pickSupportCard()">✧</div>
 
 </div>
 
@@ -571,6 +569,9 @@ ${selectedMainCard.practice}
 <button
 class="primary-btn"
 onclick="restartDraw()">
+
+style=" margin-top:30px; 
+">
 
 重新抽牌
 
