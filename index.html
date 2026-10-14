@@ -169,6 +169,22 @@ onclick="startDraw()">
 開始抽牌
 </button>
 
+<div id="ritualArea" style="display:none;">
+
+<h2>請先深呼吸一次</h2>
+
+<p>
+把今天最在意的一件事放在心裡。
+</p>
+
+<button
+class="primary-btn"
+onclick="showMainCards()">
+我準備好了
+</button>
+
+</div>
+    
 <div id="drawArea">
 
 <h2>選一張主卡</h2>
@@ -188,6 +204,14 @@ onclick="startDraw()">
 
 <h2>選一張副卡</h2>
 
+<p id="selectedMainCardText"
+style="
+margin-bottom:20px;
+font-size:18px;
+color:#666;
+">
+</p>
+    
 <div class="cards">
 
 <div class="card" onclick="pickSupportCard()">◇</div>
@@ -397,9 +421,17 @@ let selectedMainCard = null;
 
 function startDraw(){
 
-document.getElementById("drawArea").style.display="block";
+document.getElementById("ritualArea").style.display="block";
 
 document.getElementById("result").innerHTML="";
+
+}
+
+function showMainCards(){
+
+document.getElementById("ritualArea").style.display="none";
+
+document.getElementById("drawArea").style.display="block";
 
 }
 
@@ -411,6 +443,11 @@ mainCards[Math.floor(Math.random()*mainCards.length)];
 document.getElementById("drawArea").style.display="none";
 
 document.getElementById("supportArea").style.display="block";
+
+document.getElementById("selectedMainCardText").innerHTML =
+"主卡已選定：<strong>" +
+selectedMainCard.name +
+"</strong>";
 
 }
     
